@@ -37,6 +37,7 @@ const siteContent = {
     },
 };
 
+//get nav value
 const getNavValue = (obj) => {
     let keyArr = [];
     Object.values(obj).forEach(value => {
@@ -46,21 +47,85 @@ const getNavValue = (obj) => {
     return keyArr;
 }
 
+
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
 
 // insert header data --------------------------------------------------------
-let nav_a = document.querySelectorAll('nav a');
-let nav_a_text = siteContent.nav;
+let navA = document.querySelectorAll('nav a');
+let navAText = siteContent.nav;
 
-nav_a.forEach((el, i) => {
-    el.textContent = getNavValue(nav_a_text)[i];
+navA.forEach((el, i) => {
+    el.textContent = getNavValue(navAText)[i];
 });
 
-// update image path --------------------------------------------------------
-let bigImage = document.getElementById('cta-img');
-bigImage.setAttribute('src', 'img/header-img.png');
+navA.forEach(el => el.style.color = "green")
 
-// add header text
+// update image path -------------------------------------
+const bigImage = document.getElementById('cta-img');
+bigImage.setAttribute('src', siteContent["cta"]["img-src"]);
+
+// update middle-img -------------------------------------
+const midImage = document.getElementById('middle-img');
+midImage.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
+
+// add header text ----------------------------------------
+const headerText = document.querySelector('.cta-text h1');
+headerText.textContent = siteContent["cta"]["h1"];
+
+// add button text
+const btn = document.querySelector(".cta-text button");
+btn.textContent = siteContent["cta"]["button"];
+
+
+// get main content ----------------------------------------
+const getMainCon = () => {
+    mainCon.forEach((el, i) => {
+        if ((i) % 2 == 0) {
+            mainH4.push(el);
+        } else {
+            mainP.push(el);
+        }
+    });
+}
+
+// set main content ----------------------------------------
+const setMainCon = () => {
+    contentHeader.forEach((el, i) => {
+        el.textContent = mainH4[i];
+    });
+
+    contentP.forEach((el, i) => {
+        el.textContent = mainP[i];
+    });
+
+}
+
+// fill main top content ----------------------------
+const contentHeader = document.querySelectorAll('.text-content h4');
+const contentP = document.querySelectorAll('.text-content p');
+const mainCon = Object.values(siteContent['main-content']);
+mainCon.splice(4, 1); //take out unecessary element 
+
+let mainH4 = [];
+let mainP = [];
+
+getMainCon();
+setMainCon();
+
+// create contact -----------------------------------
+const contactH4 = document.querySelector('.contact h4');
+const contactP = document.querySelectorAll('.contact p');
+const contactInfo = Object.values(siteContent['contact']);
+contactInfo.splice(0, 1);
+contactH4.textContent = siteContent['contact']['contact-h4'];
+contactP.forEach((el, i) => {
+    el.textContent = contactInfo[i];
+})
+
+
+// fill footer ---------------------------------------
+const footer = document.querySelector('footer');
+footer.textContent = siteContent['footer']['copyright'];
