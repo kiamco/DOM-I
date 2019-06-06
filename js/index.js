@@ -6,6 +6,8 @@ const siteContent = {
         "nav-item-4": "Features",
         "nav-item-5": "About",
         "nav-item-6": "Contact",
+        "nav-item-7": "Videos",
+        "nav-item-8": "Gallery",
         "img-src": "img/logo.png"
     },
     "cta": {
@@ -54,6 +56,16 @@ logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
 
 // insert header data --------------------------------------------------------
+
+
+let nav = document.querySelector('nav');
+let addA = document.createElement('a');
+addA.href = "#"
+let addA2 = document.createElement('a')
+addA2.href = "#";
+nav.prepend(addA2);
+nav.appendChild(addA);
+
 let navA = document.querySelectorAll('nav a');
 let navAText = siteContent.nav;
 
