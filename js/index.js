@@ -11,7 +11,7 @@ const siteContent = {
         "img-src": "img/logo.png"
     },
     "cta": {
-        "h1": "DOM Is Awesome",
+        "h1": "DOM <br> is <br> Awesome",
         "button": "Get Started",
         "img-src": "img/header-img.png"
     },
@@ -30,7 +30,7 @@ const siteContent = {
     },
     "contact": {
         "contact-h4": "Contact",
-        "address": "123 Way 456 Street Somewhere, USA",
+        "address": "123 Way 456 Street <br> Somewhere, USA",
         "phone": "1 (888) 888-8888",
         "email": "sales@greatidea.io",
     },
@@ -85,7 +85,7 @@ midImage.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
 // add header text ----------------------------------------
 const headerText = document.querySelector('.cta-text h1');
-headerText.textContent = siteContent["cta"]["h1"];
+headerText.innerHTML = siteContent["cta"]["h1"];
 
 // add button text
 const btn = document.querySelector(".cta-text button");
@@ -134,7 +134,7 @@ const contactInfo = Object.values(siteContent['contact']);
 contactInfo.splice(0, 1);
 contactH4.textContent = siteContent['contact']['contact-h4'];
 contactP.forEach((el, i) => {
-    el.textContent = contactInfo[i];
+    el.innerHTML = contactInfo[i];
 })
 
 
