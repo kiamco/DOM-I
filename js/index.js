@@ -94,24 +94,13 @@ btn.textContent = siteContent["cta"]["button"];
 
 // get main content ----------------------------------------
 const getMainCon = () => {
-    mainCon.forEach((el, i) => {
-        if ((i) % 2 == 0) {
-            mainH4.push(el);
-        } else {
-            mainP.push(el);
-        }
-    });
+    mainCon.forEach((el, i) => (i % 2 == 0) ? mainH4.push(el) : mainP.push(el));
 }
 
 // set main content ----------------------------------------
 const setMainCon = () => {
-    contentHeader.forEach((el, i) => {
-        el.textContent = mainH4[i];
-    });
-
-    contentP.forEach((el, i) => {
-        el.textContent = mainP[i];
-    });
+    contentHeader.forEach((el, i) => el.textContent = mainH4[i]);
+    contentP.forEach((el, i) => el.textContent = mainP[i]);
 
 }
 
@@ -141,3 +130,10 @@ contactP.forEach((el, i) => {
 // fill footer ---------------------------------------
 const footer = document.querySelector('footer');
 footer.textContent = siteContent['footer']['copyright'];
+
+
+//stretch
+btn.addEventListener('click', (event) => {
+    headerText.innerHTML = 'Dom <br> is <br> okay..<br> I guess';
+    alert('hello');
+});
